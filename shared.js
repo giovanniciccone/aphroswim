@@ -8,7 +8,7 @@ const overlayHTML = `
   opacity:0;visibility:hidden;
   transition:opacity 0.3s ease,visibility 0.3s ease;
 ">
-  <img src="logo.png" alt="Aphros Swim" style="height:88px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,100,200,.2));"/>
+  <img src="logo.png" alt="Aphros Swim" style="height:110px;object-fit:contain;filter:drop-shadow(0 4px 16px rgba(0,100,200,.25));"/>
 
   <div style="position:relative;width:280px;height:80px;overflow:hidden;border-bottom:2.5px solid #0064c8;border-radius:2px 2px 0 0;">
     <div id="pt-water" style="
@@ -105,7 +105,10 @@ requestAnimationFrame(() => { document.documentElement.style.opacity = '1'; });
 // ── NAV HTML ─────────────────────────────────────────────────────────────────
 const NAV_HTML = `
 <nav id="nav">
-  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Aphros Swim"></a>
+  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:12px;">
+    <img src="logo.png" alt="Aphros Swim" style="height:64px;">
+    <img src="https://www.fipsas.it/images/logo-fipsas.png" alt="FIPSAS" style="height:38px;opacity:.85;" onerror="this.style.display='none'">
+  </a>
   <ul class="nav-links">
     <li><a href="corsi.html">Corsi</a></li>
     <li><a href="orari.html">Orari</a></li>
@@ -132,7 +135,8 @@ const FOOTER_HTML = `
   <div class="fi">
     <div class="fb">
       <img src="logo.png" alt="Aphros Swim">
-      <p>A.S.D. Aphros Swim — Scuola Nuoto Federale FIN. Via Apricena Km 0.400, 71016 San Severo (FG), Puglia.</p>
+      <img src="https://www.fipsas.it/images/logo-fipsas.png" alt="FIPSAS" style="height:32px;margin-bottom:16px;opacity:.7;filter:brightness(0) invert(1);" onerror="this.style.display='none'">
+      <p>A.S.D. Aphros Swim — Scuola Nuoto Federale FIPSAS. Via Apricena Km 0.400, 71016 San Severo (FG), Puglia.</p>
     </div>
     <div class="fcol">
       <div class="fct">Navigazione</div>
