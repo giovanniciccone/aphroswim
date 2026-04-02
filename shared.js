@@ -115,7 +115,7 @@ const NAV_HTML = `
     <li><a href="contatti.html">Contatti</a></li>
   </ul>
   <a href="contatti.html" class="nav-cta">Iscriviti</a>
-  <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <button class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 <div id="mmenu">
   <a href="corsi.html">Corsi</a>
@@ -197,9 +197,31 @@ updateNav();
 // ── MOBILE MENU ──────────────────────────────────────────────────────────────
 function toggleMenu() {
   const m = document.getElementById('mmenu');
-  m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+  const b = document.getElementById('burger');
+  const isOpen = m.classList.contains('open');
+  if (isOpen) {
+    m.classList.remove('open');
+    b.classList.remove('open');
+  } else {
+    m.classList.add('open');
+    b.classList.add('open');
+  }
 }
-function closeMenu() { document.getElementById('mmenu').style.display = 'none'; }
+function closeMenu() {
+  const m = document.getElementById('mmenu');
+  const b = document.getElementById('burger');
+  m.classList.remove('open');
+  b.classList.remove('open');
+}
+
+// close menu when clicking outside
+document.addEventListener('click', e => {
+  const m = document.getElementById('mmenu');
+  const b = document.getElementById('burger');
+  if (m && m.classList.contains('open')) {
+    if (!m.contains(e.target) && !b.contains(e.target)) closeMenu();
+  }
+}, true);
 
 // close menu on mobile link click + intercept for transition
 document.querySelectorAll('#mmenu a').forEach(a => {

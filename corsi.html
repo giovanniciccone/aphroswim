@@ -9,30 +9,48 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.corsi-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
-  margin-top: 56px;
-}
-.corso-card {
-  background: var(--white); border-radius: var(--radius);
-  border: 1px solid var(--border); overflow: hidden;
-  display: grid; grid-template-columns: 280px 1fr;
-  transition: box-shadow .25s, transform .25s;
-}
-.corso-card:hover { box-shadow: 0 8px 32px rgba(0,100,200,.1); transform: translateY(-3px); }
-.corso-img { width: 100%; height: 100%; min-height: 240px; object-fit: cover; display: block; }
-.corso-body { padding: 32px 28px; }
-.corso-num { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
-.corso-title { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--text); margin-bottom: 12px; }
-.corso-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
-.corso-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-.ctag { font-size: 11px; font-weight: 500; color: var(--blue); background: var(--blue-light); padding: 4px 10px; border-radius: 999px; }
-.corso-info { display: flex; flex-direction: column; gap: 6px; }
-.corso-info-row { font-size: 13px; color: var(--muted); display: flex; gap: 8px; }
-.corso-info-row strong { color: var(--text); font-weight: 500; min-width: 80px; }
+.corsi-list { display: flex; flex-direction: column; gap: 32px; margin-top: 56px; }
 
-/* Full-width card for acquagym */
-.corso-card.wide { grid-template-columns: 360px 1fr; }
+.corso-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  transition: box-shadow .3s, transform .3s;
+}
+.corso-card:hover { box-shadow: 0 10px 36px rgba(0,100,200,.11); transform: translateY(-3px); }
+
+.corso-img {
+  width: 100%; height: 100%; min-height: 260px;
+  object-fit: cover; display: block;
+}
+
+.corso-body { padding: 36px 32px; display: flex; flex-direction: column; justify-content: center; }
+
+.corso-num {
+  font-size: 11px; font-weight: 500; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 8px;
+}
+.corso-title {
+  font-family: 'DM Serif Display', serif; font-size: 28px;
+  color: var(--text); margin-bottom: 14px; line-height: 1.1;
+}
+.corso-desc {
+  font-size: 14px; color: var(--muted); line-height: 1.8;
+  margin-bottom: 20px;
+}
+.corso-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+.ctag {
+  font-size: 11px; font-weight: 500; color: var(--blue);
+  background: var(--blue-light); padding: 4px 12px; border-radius: 999px;
+}
+
+.corso-meta { display: flex; flex-direction: column; gap: 7px; border-top: 1px solid var(--border); padding-top: 20px; }
+.corso-meta-row { display: flex; gap: 10px; align-items: baseline; font-size: 13px; }
+.corso-meta-row strong { color: var(--text); font-weight: 500; min-width: 90px; flex-shrink: 0; }
+.corso-meta-row span { color: var(--muted); line-height: 1.5; }
 
 .cta-note {
   margin-top: 48px; padding: 24px 28px;
@@ -42,15 +60,18 @@
   flex-wrap: wrap;
 }
 .cta-note p { font-size: 15px; color: var(--text); line-height: 1.6; }
-.cta-note p span { color: var(--blue); font-weight: 500; }
+.cta-note p strong { color: var(--blue); }
 
-@media(max-width:1100px) {
-  .corsi-grid { grid-template-columns: 1fr; }
-  .corso-card, .corso-card.wide { grid-template-columns: 240px 1fr; }
+/* ── RESPONSIVE ── */
+@media(max-width: 1024px) {
+  .corso-card { grid-template-columns: 260px 1fr; }
 }
-@media(max-width:768px) {
-  .corso-card, .corso-card.wide { grid-template-columns: 1fr; }
-  .corso-img { min-height: 200px; }
+@media(max-width: 768px) {
+  .corso-card { grid-template-columns: 1fr; }
+  .corso-img { min-height: 220px; height: 220px; }
+  .corso-body { padding: 24px 20px; }
+  .corso-title { font-size: 24px; }
+  .cta-note { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
@@ -60,117 +81,140 @@
   <div class="page-hero-inner">
     <div class="label r">Corsi</div>
     <h1 class="r">I nostri corsi</h1>
-    <p class="r">Sei corsi pensati per coprire ogni età, ogni livello e ogni obiettivo. Tutti gli istruttori sono certificati dalla Federazione Italiana Nuoto.</p>
+    <p class="r">Sei percorsi pensati per ogni età e obiettivo. Tutti gli istruttori sono certificati dalla Federazione Italiana Nuoto.</p>
   </div>
 </div>
 
 <section class="section">
   <div class="section-inner">
-    <div class="corsi-grid">
+    <div class="corsi-list">
 
-      <!-- Scuola Nuoto 4-5 anni -->
+      <!-- 01 Bambini 4-5 -->
       <div class="corso-card r">
-        <img class="corso-img" src="https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=600&q=80" alt="Scuola nuoto bambini piccoli" loading="lazy">
+        <img class="corso-img" src="https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=640&q=80" alt="Scuola nuoto bambini 4-5 anni" loading="lazy">
         <div class="corso-body">
           <div class="corso-num">01 — Scuola Nuoto</div>
           <div class="corso-title">Bambini 4–5 anni</div>
-          <p class="corso-desc">Il primo approccio all'acqua. I bambini imparano a sentirsi a proprio agio in vasca attraverso il gioco: galleggiamento, respirazione, immersione e i primi movimenti coordinati. Gruppi piccoli con istruttore dedicato, per garantire sicurezza e progressione costante.</p>
-          <div class="corso-tags"><span class="ctag">4–5 anni</span><span class="ctag">Principianti</span></div>
-          <div class="corso-info">
-            <div class="corso-info-row"><strong>Orario:</strong> Lun/Mar/Mer/Gio/Ven/Sab 16:00–17:00</div>
-            <div class="corso-info-row"><strong>Frequenza:</strong> 2 volte a settimana</div>
+          <p class="corso-desc">Il primo approccio all'acqua avviene attraverso il gioco: galleggiamento, respirazione, immersione e i primi movimenti coordinati. Gruppi piccoli con istruttore dedicato per garantire sicurezza e progressione costante sin dalla prima lezione.</p>
+          <div class="corso-tags">
+            <span class="ctag">4–5 anni</span>
+            <span class="ctag">Principianti</span>
+            <span class="ctag">Gruppi piccoli</span>
+          </div>
+          <div class="corso-meta">
+            <div class="corso-meta-row"><strong>Orario</strong><span>Lun / Mar / Mer / Gio / Ven / Sab · 16:00 – 17:00</span></div>
+            <div class="corso-meta-row"><strong>Frequenza</strong><span>2 volte a settimana</span></div>
+            <div class="corso-meta-row"><strong>Nota</strong><span>Lunedì e Giovedì il corso si svolge in contemporanea con Agonismo Esordienti e P.O.N. Spazio</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Scuola Nuoto 7-10 anni -->
-      <div class="corso-card r d1">
-        <img class="corso-img" src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=600&q=80" alt="Scuola nuoto ragazzi" loading="lazy">
+      <!-- 02 Bambini 7-10 -->
+      <div class="corso-card r">
+        <img class="corso-img" src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=640&q=80" alt="Scuola nuoto bambini 7-10 anni" loading="lazy">
         <div class="corso-body">
           <div class="corso-num">02 — Scuola Nuoto</div>
           <div class="corso-title">Bambini 7–10 anni</div>
-          <p class="corso-desc">Perfezionamento delle tecniche di nuoto: stile libero, dorso, rana e farfalla. I bambini consolidano la coordinazione, migliorano l'efficienza in acqua e sviluppano le basi per un nuoto autonomo e corretto. Gruppi per livello omogeneo.</p>
-          <div class="corso-tags"><span class="ctag">7–10 anni</span><span class="ctag">Intermedio</span></div>
-          <div class="corso-info">
-            <div class="corso-info-row"><strong>Orario:</strong> Lun/Mar/Mer/Gio/Ven/Sab 17:00–18:00</div>
-            <div class="corso-info-row"><strong>Frequenza:</strong> 2 volte a settimana</div>
+          <p class="corso-desc">Perfezionamento delle quattro tecniche di nuoto: stile libero, dorso, rana e farfalla. I bambini consolidano la coordinazione, migliorano l'efficienza in acqua e sviluppano le basi per un nuoto autonomo e corretto, con attenzione alla respirazione e alla posizione del corpo.</p>
+          <div class="corso-tags">
+            <span class="ctag">7–10 anni</span>
+            <span class="ctag">Intermedio</span>
+            <span class="ctag">Tecnica base</span>
+          </div>
+          <div class="corso-meta">
+            <div class="corso-meta-row"><strong>Orario</strong><span>Lun / Mar / Mer / Gio / Ven / Sab · 17:00 – 18:00</span></div>
+            <div class="corso-meta-row"><strong>Frequenza</strong><span>2 volte a settimana</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Scuola Nuoto 11-14 anni -->
-      <div class="corso-card wide r">
-        <img class="corso-img" src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=700&q=80" alt="Scuola nuoto ragazzi 11-14 anni" loading="lazy">
+      <!-- 03 Ragazzi 11-14 -->
+      <div class="corso-card r">
+        <img class="corso-img" src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=640&q=80" alt="Scuola nuoto ragazzi 11-14 anni" loading="lazy">
         <div class="corso-body">
           <div class="corso-num">03 — Scuola Nuoto</div>
           <div class="corso-title">Ragazzi 11–14 anni</div>
-          <p class="corso-desc">Il gruppo ragazzi lavora sulla tecnica avanzata delle quattro nuotate, sulla resistenza e sulla velocità in vasca. È il ponte naturale tra la scuola nuoto e il percorso agonistico per chi vuole fare il salto di qualità. Allenamenti strutturati con progressioni tecniche specifiche per l'età.</p>
-          <div class="corso-tags"><span class="ctag">11–14 anni</span><span class="ctag">Avanzato</span><span class="ctag">Pre-agonistico</span></div>
-          <div class="corso-info">
-            <div class="corso-info-row"><strong>Orario:</strong> Lun/Mar/Mer/Gio/Ven/Sab 18:00–19:00</div>
-            <div class="corso-info-row"><strong>Frequenza:</strong> 2–3 volte a settimana</div>
+          <p class="corso-desc">Il gruppo ragazzi lavora sulla tecnica avanzata delle quattro nuotate, sulla resistenza e sulla velocità in vasca. È il ponte naturale verso il percorso agonistico per chi dimostra passione e continuità. Allenamenti strutturati con progressioni tecniche specifiche per l'età.</p>
+          <div class="corso-tags">
+            <span class="ctag">11–14 anni</span>
+            <span class="ctag">Avanzato</span>
+            <span class="ctag">Pre-agonistico</span>
+          </div>
+          <div class="corso-meta">
+            <div class="corso-meta-row"><strong>Orario</strong><span>Lun / Mar / Mer / Gio / Ven / Sab · 18:00 – 19:00</span></div>
+            <div class="corso-meta-row"><strong>Frequenza</strong><span>2–3 volte a settimana</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Corso Adulti -->
+      <!-- 04 Adulti -->
       <div class="corso-card r">
-        <img class="corso-img" src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=600&q=80" alt="Corso nuoto adulti" loading="lazy">
+        <img class="corso-img" src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=640&q=80" alt="Corso nuoto adulti" loading="lazy">
         <div class="corso-body">
           <div class="corso-num">04 — Adulti</div>
           <div class="corso-title">Corso di Nuoto Adulti</div>
-          <p class="corso-desc">Per chi non ha mai nuotato e per chi vuole migliorare. Il corso adulti copre tutti i livelli con gruppi omogenei: dal principiante assoluto a chi desidera perfezionare la tecnica delle quattro nuotate. Orari mattutini e serali per conciliarsi con qualsiasi agenda.</p>
-          <div class="corso-tags"><span class="ctag">Dai 16 anni</span><span class="ctag">Tutti i livelli</span><span class="ctag">Mattino e sera</span></div>
-          <div class="corso-info">
-            <div class="corso-info-row"><strong>Mattino:</strong> Lun/Gio 10:00–12:00 · Mar/Ven 10:00–12:00</div>
-            <div class="corso-info-row"><strong>Sera:</strong> Lun/Gio 20:00–22:00 · Mar/Ven 19:00–20:00</div>
+          <p class="corso-desc">Per chi non ha mai nuotato e per chi vuole migliorare. Gruppi omogenei per livello, dal principiante assoluto a chi desidera perfezionare la tecnica delle quattro nuotate. Orari sia mattutini che serali per conciliarsi con qualsiasi impegno quotidiano.</p>
+          <div class="corso-tags">
+            <span class="ctag">Dai 16 anni</span>
+            <span class="ctag">Tutti i livelli</span>
+            <span class="ctag">Mattino e sera</span>
+          </div>
+          <div class="corso-meta">
+            <div class="corso-meta-row"><strong>Mattino</strong><span>Lun e Gio 10:00–12:00 · Mar e Ven 10:00–12:00</span></div>
+            <div class="corso-meta-row"><strong>Sera</strong><span>Lun e Gio 20:00–22:00 · Mar e Ven 19:00–20:00</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Acquagym -->
-      <div class="corso-card r d1">
-        <img class="corso-img" src="https://images.unsplash.com/photo-1538805060514-97d9cc172021?w=600&q=80" alt="Acquagym" loading="lazy">
+      <!-- 05 Acquagym -->
+      <div class="corso-card r">
+        <img class="corso-img" src="https://images.unsplash.com/photo-1538805060514-97d9cc172021?w=640&q=80" alt="Acquagym" loading="lazy">
         <div class="corso-body">
           <div class="corso-num">05 — Fitness</div>
           <div class="corso-title">Acquagym</div>
-          <p class="corso-desc">Ginnastica in acqua ad impatto articolare praticamente nullo. La resistenza dell'acqua allena i muscoli in profondità mentre la spinta idrostatica protegge articolazioni e cartilagini. Ideale per tonificazione, dimagrimento, benessere cardiovascolare e recupero. Adatta a tutte le età, anche in presenza di problemi articolari.</p>
-          <div class="corso-tags"><span class="ctag">Tutte le età</span><span class="ctag">Tonificazione</span><span class="ctag">Riabilitazione</span></div>
-          <div class="corso-info">
-            <div class="corso-info-row"><strong>Mattino:</strong> Lun/Gio 10:00–12:00 · Lun/Gio 15:00–16:00</div>
-            <div class="corso-info-row"><strong>Sera:</strong> Mar/Ven 20:00–21:00</div>
+          <p class="corso-desc">Ginnastica in acqua a impatto articolare praticamente nullo. La resistenza dell'acqua allena i muscoli in profondità mentre la spinta idrostatica protegge articolazioni e cartilagini. Ideale per tonificazione, dimagrimento, benessere cardiovascolare e recupero. Adatta davvero a tutte le età, incluse persone con problemi articolari o in fase riabilitativa.</p>
+          <div class="corso-tags">
+            <span class="ctag">Tutte le età</span>
+            <span class="ctag">Tonificazione</span>
+            <span class="ctag">Riabilitazione</span>
+            <span class="ctag">Basso impatto</span>
+          </div>
+          <div class="corso-meta">
+            <div class="corso-meta-row"><strong>Mattino</strong><span>Lun e Gio 10:00–12:00 · Lun e Gio 15:00–16:00</span></div>
+            <div class="corso-meta-row"><strong>Sera</strong><span>Mar e Ven 20:00–21:00</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Agonismo -->
-      <div class="corso-card r d2">
-        <img class="corso-img" src="https://images.unsplash.com/photo-1514905552197-0610a4d8fd73?w=600&q=80" alt="Agonismo" loading="lazy">
+      <!-- 06 Agonismo -->
+      <div class="corso-card r">
+        <img class="corso-img" src="https://images.unsplash.com/photo-1514905552197-0610a4d8fd73?w=640&q=80" alt="Agonismo nuoto" loading="lazy">
         <div class="corso-body">
           <div class="corso-num">06 — Agonismo</div>
           <div class="corso-title">Settore Agonistico</div>
-          <p class="corso-desc">La squadra agonistica di Aphros Swim gareggia nei campionati regionali e nazionali FIN. Il programma include tre fasce: <strong>Esordienti</strong> (primo livello agonistico, 16:00), <strong>Pre-Agonistica</strong> (preparazione alle gare) e <strong>Agonismo Categoria</strong> (atleti federati, allenamento serale). Accesso previo provino con i tecnici.</p>
-          <div class="corso-tags"><span class="ctag">FIN</span><span class="ctag">Esordienti</span><span class="ctag">Pre-agonistica</span><span class="ctag">Categoria</span></div>
-          <div class="corso-info">
-            <div class="corso-info-row"><strong>Esordienti:</strong> Lun/Gio/Sab 16:00–17:00</div>
-            <div class="corso-info-row"><strong>Pre-Agonistica:</strong> Mer/Sab 15:00–16:00</div>
-            <div class="corso-info-row"><strong>Categoria:</strong> Lun/Mer/Gio 19:00–20:00 · Mar/Ven 15:00–16:00</div>
+          <p class="corso-desc">La squadra agonistica di Aphros Swim gareggia nei campionati regionali e nazionali FIN. Il programma è articolato in tre livelli: Esordienti (primo approccio alle gare), Pre-Agonistica (preparazione tecnica avanzata) e Agonismo Categoria (atleti federati con calendario gare completo). L'accesso avviene tramite provino con i tecnici.</p>
+          <div class="corso-tags">
+            <span class="ctag">FIN</span>
+            <span class="ctag">Esordienti</span>
+            <span class="ctag">Pre-Agonistica</span>
+            <span class="ctag">Categoria</span>
+          </div>
+          <div class="corso-meta">
+            <div class="corso-meta-row"><strong>Esordienti</strong><span>Lun / Gio / Sab · 16:00 – 17:00</span></div>
+            <div class="corso-meta-row"><strong>Pre-Agonistica</strong><span>Mer / Sab · 15:00 – 16:00</span></div>
+            <div class="corso-meta-row"><strong>Categoria</strong><span>Lun / Mer / Gio 19:00–20:00 · Mar / Ven 15:00–16:00</span></div>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- P.O.N. note -->
-    <div class="cta-note r" style="margin-top:32px;margin-bottom:0;">
-      <p>È inoltre attivo il programma <strong>P.O.N. Spazio</strong> nelle fasce pomeridiane del lunedì e giovedì (16:00). Per informazioni sull'accesso al programma contattare la segreteria.</p>
-      <a href="contatti.html" class="btn-blue" style="white-space:nowrap;">Info P.O.N.</a>
+    <!-- Note PON -->
+    <div class="cta-note r">
+      <p>È inoltre attivo il programma <strong>P.O.N. Spazio</strong> il lunedì e giovedì alle 16:00, in contemporanea con la Scuola Nuoto Bambini ed Agonismo Esordienti. Per informazioni contattare la segreteria al <strong>0882 248939</strong>.</p>
+      <a href="contatti.html" class="btn-blue" style="white-space:nowrap;flex-shrink:0;">Contattaci</a>
     </div>
 
-    <div class="cta-note r" style="background:var(--white);border:1px solid var(--border);margin-top:16px;">
-      <p>Certificato medico sportivo obbligatorio per tutti i corsi. Per i corsi agonistici è richiesto il certificato di idoneità agonistica. Contattare la segreteria al <span>0882 248939</span> per informazioni e iscrizioni.</p>
-      <a href="contatti.html" class="btn-outline" style="white-space:nowrap;">Contattaci</a>
-    </div>
   </div>
 </section>
 
