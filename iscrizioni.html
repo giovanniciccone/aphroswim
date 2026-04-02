@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iscrizioni — Aphros Swim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* HOW TO */
+.steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 52px; }
+.step { background: var(--white); padding: 32px 24px; }
+.step-n { font-family: 'DM Serif Display', serif; font-size: 48px; line-height: 1; color: var(--blue); opacity: .2; margin-bottom: 12px; }
+.step-t { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); margin-bottom: 10px; }
+.step-p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* PREZZI */
+.prezzi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 24px; }
+.pcard { background: var(--white); padding: 40px 32px; }
+.pcard.feat { background: var(--blue); }
+.p-lbl { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.pcard.feat .p-lbl { color: rgba(255,255,255,.65); }
+.p-nome { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--text); margin-bottom: 20px; }
+.pcard.feat .p-nome { color: #fff; }
+.p-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+.pcard.feat .p-desc { color: rgba(255,255,255,.75); border-color: rgba(255,255,255,.15); }
+.p-list { list-style: none; }
+.p-list li { font-size: 14px; color: var(--muted); padding: 9px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+.pcard.feat .p-list li { color: rgba(255,255,255,.8); border-color: rgba(255,255,255,.12); }
+.p-list li.yes { color: var(--text); }
+.pcard.feat .p-list li.yes { color: #fff; }
+.ck { width: 14px; height: 14px; flex-shrink: 0; }
+.p-cta { display: block; text-align: center; margin-top: 28px; font-size: 14px; font-weight: 500; text-decoration: none; padding: 13px; border-radius: 6px; border: 1.5px solid var(--blue); color: var(--blue); transition: .2s; }
+.p-cta:hover { background: var(--blue); color: #fff; }
+.pcard.feat .p-cta { background: #fff; color: var(--blue); border-color: #fff; }
+.pcard.feat .p-cta:hover { background: rgba(255,255,255,.88); }
+
+.cert-box { background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); padding: 36px 32px; margin-top: 48px; }
+.cert-box h3 { font-family: 'DM Serif Display', serif; font-size: 24px; margin-bottom: 12px; }
+.cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+.cert-item { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.cert-item strong { display: block; color: var(--text); font-weight: 500; margin-bottom: 4px; font-size: 15px; }
+
+@media(max-width:1024px) {
+  .steps { grid-template-columns: repeat(2,1fr); }
+  .prezzi-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:640px) {
+  .steps { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="label r">Iscrizioni</div>
+    <h1 class="r">Come iscriversi</h1>
+    <p class="r">Le iscrizioni sono aperte tutto l'anno. L'inizio preferenziale della stagione è a settembre, ma è possibile iscriversi in qualsiasi momento con posti disponibili.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+
+    <div class="label r">Procedura di iscrizione</div>
+    <h2 class="section-title r">Quattro passi semplici</h2>
+
+    <div class="steps">
+      <div class="step r">
+        <div class="step-n">01</div>
+        <div class="step-t">Scegli il corso</div>
+        <p class="step-p">Consulta la pagina <a href="corsi.html" style="color:var(--blue)">Corsi</a> per trovare quello adatto alla tua età e al tuo livello. In caso di dubbi, contatta la segreteria per un consiglio personalizzato.</p>
+      </div>
+      <div class="step r d1">
+        <div class="step-n">02</div>
+        <div class="step-t">Ottieni il certificato</div>
+        <p class="step-p">Procurati il certificato medico sportivo dal tuo medico di famiglia o da un medico sportivo. Per i corsi agonistici è richiesto il certificato di idoneità agonistica.</p>
+      </div>
+      <div class="step r d2">
+        <div class="step-n">03</div>
+        <div class="step-t">Presentati in segreteria</div>
+        <p class="step-p">Vieni in piscina con certificato medico e documento d'identità (per i minori, firma del genitore o tutore). La segreteria è aperta mattina e pomeriggio.</p>
+      </div>
+      <div class="step r d3">
+        <div class="step-n">04</div>
+        <div class="step-t">Inizia ad allenarti</div>
+        <p class="step-p">Completa il pagamento della quota stagionale — tessera FIN e assicurazione incluse — e sei pronto per iniziare. Porta costume, cuffia e occhialini.</p>
+      </div>
+    </div>
+
+    <!-- PREZZI -->
+    <div style="margin-top:72px;">
+      <div class="label r">Quote stagionali</div>
+      <h2 class="section-title r">Tariffe</h2>
+      <p class="section-sub r" style="margin-bottom:0">I prezzi indicati sono orientativi. Contattare la segreteria per le tariffe aggiornate della stagione in corso.</p>
+
+      <div class="prezzi-grid" style="margin-top:32px;">
+        <div class="pcard r">
+          <div class="p-lbl">Corso singolo</div>
+          <div class="p-nome">Base</div>
+          <p class="p-desc">Per chi si iscrive a un solo corso a scelta tra quelli disponibili.</p>
+          <ul class="p-list">
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="#0064c8" stroke-width="1.5" stroke-linecap="round"/></svg>1 corso a scelta</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="#0064c8" stroke-width="1.5" stroke-linecap="round"/></svg>Tessera FIN stagionale inclusa</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="#0064c8" stroke-width="1.5" stroke-linecap="round"/></svg>Copertura assicurativa inclusa</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="#0064c8" stroke-width="1.5" stroke-linecap="round"/></svg>Accesso agli spogliatoi</li>
+            <li><svg class="ck" viewBox="0 0 14 14" fill="none"><line x1="2" y1="7" x2="12" y2="7" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/></svg>Sconto famiglia non incluso</li>
+          </ul>
+          <a href="contatti.html" class="p-cta">Richiedi informazioni</a>
+        </div>
+        <div class="pcard feat r d1">
+          <div class="p-lbl">Consigliato · Famiglie</div>
+          <div class="p-nome">Famiglia</div>
+          <p class="p-desc">Per famiglie con 2 o più iscritti. Lo sconto viene applicato dalla seconda iscrizione in poi.</p>
+          <ul class="p-list">
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>Sconto applicato da 2 iscritti</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>Tessera FIN per ogni membro</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>Copertura assicurativa inclusa</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>Corsi diversi per ogni membro</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>Unico pagamento familiare</li>
+          </ul>
+          <a href="contatti.html" class="p-cta">Richiedi informazioni</a>
+        </div>
+        <div class="pcard r d2">
+          <div class="p-lbl">Atleti agonisti</div>
+          <div class="p-nome">Agonismo</div>
+          <p class="p-desc">Percorso completo per gli atleti della squadra agonistica con accesso agli allenamenti giornalieri.</p>
+          <ul class="p-list">
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="#0064c8" stroke-width="1.5" stroke-linecap="round"/></svg>Allenamenti giornalieri</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="#0064c8" stroke-width="1.5" stroke-linecap="round"/></svg>Tessera agonistica FIN</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="#0064c8" stroke-width="1.5" stroke-linecap="round"/></svg>Calendario gare coperto</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="#0064c8" stroke-width="1.5" stroke-linecap="round"/></svg>Analisi tecnica video</li>
+            <li class="yes"><svg class="ck" viewBox="0 0 14 14" fill="none"><polyline points="2,7 6,11 12,3" stroke="#0064c8" stroke-width="1.5" stroke-linecap="round"/></svg>Pianificazione periodizzata</li>
+          </ul>
+          <a href="contatti.html" class="p-cta">Richiedi informazioni</a>
+        </div>
+      </div>
+
+      <p class="r" style="margin-top:16px;font-size:13px;color:var(--muted);text-align:center;">
+        Tutte le quote comprendono la tessera FIN stagionale e la copertura assicurativa. Certificato medico obbligatorio per legge.
+      </p>
+    </div>
+
+    <!-- DOCUMENTI -->
+    <div class="cert-box r">
+      <h3>Documenti e attrezzatura richiesti</h3>
+      <p style="font-size:14px;color:var(--muted);line-height:1.7;">Presentarsi in segreteria con i seguenti documenti. Per i minori è obbligatoria la presenza e la firma di un genitore o tutore legale.</p>
+      <div class="cert-grid">
+        <div class="cert-item">
+          <strong>Documenti per l'iscrizione</strong>
+          Certificato medico non agonistico (rilasciato dal medico di famiglia) · 1 foto tessera · Informativa dati personali compilata · Documento d'identità
+        </div>
+        <div class="cert-item">
+          <strong>Per il settore agonistico</strong>
+          Certificato medico di idoneità agonistica (rilasciato da medico sportivo o struttura ASL convenzionata) · 1 foto tessera · Documento d'identità · Per i minori: firma del genitore
+        </div>
+        <div class="cert-item">
+          <strong>Attrezzatura obbligatoria</strong>
+          Costume olimpionico · Cuffia (obbligatoria in vasca) · Occhialini · Ciabatte per piscina · Accappatoio
+        </div>
+        <div class="cert-item">
+          <strong>Attrezzatura consigliata</strong>
+          Docciaschuma antimicotico (vivamente consigliato per l'igiene in piscina)
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>

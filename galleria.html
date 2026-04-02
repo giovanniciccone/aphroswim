@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galleria — Aphros Swim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* MARQUEE */
+.gallery-track { overflow: hidden; margin-bottom: 12px; }
+.gallery-row {
+  display: flex; gap: 12px; width: max-content;
+  animation: gscroll 30s linear infinite;
+}
+.gallery-row.rev { animation-direction: reverse; animation-duration: 35s; }
+.gallery-row:hover { animation-play-state: paused; }
+@keyframes gscroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.gimg { height: 240px; width: auto; object-fit: cover; border-radius: 10px; flex-shrink: 0; display: block; cursor: pointer; transition: transform .3s, filter .3s; filter: saturate(.9); }
+.gimg:hover { transform: scale(1.03); filter: saturate(1.1); }
+.gimg.tall { height: 300px; }
+
+/* GRID */
+.photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 56px; }
+.photo-grid .span2 { grid-column: span 2; }
+.photo-grid .span2-row { grid-row: span 2; }
+.ph-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; display: block; cursor: pointer; transition: transform .3s, filter .3s; filter: saturate(.88); }
+.ph-img.tall { height: 452px; }
+.ph-img:hover { transform: scale(1.02); filter: saturate(1.05); }
+
+/* LIGHTBOX */
+#lb { display: none; position: fixed; inset: 0; z-index: 800; background: rgba(0,0,0,.92); align-items: center; justify-content: center; }
+#lb.on { display: flex; }
+#lb img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 4px; }
+#lb-close { position: absolute; top: 24px; right: 32px; font-size: 32px; color: #fff; cursor: pointer; background: none; border: none; line-height: 1; opacity: .7; }
+#lb-close:hover { opacity: 1; }
+#lb-prev, #lb-next { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; padding: 16px; opacity: .5; }
+#lb-prev:hover, #lb-next:hover { opacity: 1; }
+#lb-prev { left: 16px; }
+#lb-next { right: 16px; }
+
+.social-strip { background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); padding: 36px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 56px; }
+.social-strip p { font-size: 15px; color: var(--muted); line-height: 1.6; max-width: 520px; }
+.social-strip p strong { color: var(--text); }
+
+@media(max-width:1024px) { .photo-grid { grid-template-columns: repeat(2,1fr); } .photo-grid .span2, .photo-grid .span2-row { grid-column: span 1; grid-row: span 1; } .ph-img.tall { height: 220px; } }
+@media(max-width:640px) { .photo-grid { grid-template-columns: 1fr; } .ph-img { height: 200px; } }
+</style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="label r">Galleria</div>
+    <h1 class="r">La vita in acqua</h1>
+    <p class="r">Allenamenti, gare, acquagym e momenti di squadra. Scorri le foto della nostra piscina.</p>
+  </div>
+</div>
+
+<section class="section" style="padding-bottom:0;">
+  <div class="section-inner">
+    <!-- MARQUEE ROW 1 -->
+    <div class="gallery-track r">
+      <div class="gallery-row">
+        <img class="gimg" src="https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=500&q=70" alt="Nuoto bambini" onclick="openLb(0)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=500&q=70" alt="Vasca" onclick="openLb(1)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=500&q=70" alt="Agonismo" onclick="openLb(2)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=500&q=70" alt="Adulti" onclick="openLb(3)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1461770354136-8f58567b617a?w=500&q=70" alt="Pinnato" onclick="openLb(4)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1622629797619-c100e3e67e2e?w=500&q=70" alt="Piscina" onclick="openLb(5)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1538805060514-97d9cc172021?w=500&q=70" alt="Acquagym" onclick="openLb(6)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=500&q=70" alt="Apnea" onclick="openLb(7)">
+        <!-- duplicates for seamless loop -->
+        <img class="gimg" src="https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=500&q=70" alt="Nuoto bambini" onclick="openLb(0)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=500&q=70" alt="Vasca" onclick="openLb(1)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=500&q=70" alt="Agonismo" onclick="openLb(2)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=500&q=70" alt="Adulti" onclick="openLb(3)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1461770354136-8f58567b617a?w=500&q=70" alt="Pinnato" onclick="openLb(4)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1622629797619-c100e3e67e2e?w=500&q=70" alt="Piscina" onclick="openLb(5)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1538805060514-97d9cc172021?w=500&q=70" alt="Acquagym" onclick="openLb(6)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=500&q=70" alt="Apnea" onclick="openLb(7)">
+      </div>
+    </div>
+    <!-- MARQUEE ROW 2 -->
+    <div class="gallery-track r d1">
+      <div class="gallery-row rev">
+        <img class="gimg" src="https://images.unsplash.com/photo-1514905552197-0610a4d8fd73?w=500&q=70" alt="Gara" onclick="openLb(8)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=500&q=70" alt="Vasca 2" onclick="openLb(1)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=500&q=70" alt="Nuoto 2" onclick="openLb(9)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=70" alt="Sport" onclick="openLb(10)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=500&q=70" alt="Bambini 2" onclick="openLb(0)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=500&q=70" alt="Team" onclick="openLb(2)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=500&q=70" alt="Vasca 3" onclick="openLb(3)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1461770354136-8f58567b617a?w=500&q=70" alt="Pinnato 2" onclick="openLb(4)">
+        <!-- duplicates -->
+        <img class="gimg" src="https://images.unsplash.com/photo-1514905552197-0610a4d8fd73?w=500&q=70" alt="Gara" onclick="openLb(8)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=500&q=70" alt="Vasca 2" onclick="openLb(1)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=500&q=70" alt="Nuoto 2" onclick="openLb(9)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=70" alt="Sport" onclick="openLb(10)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=500&q=70" alt="Bambini 2" onclick="openLb(0)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=500&q=70" alt="Team" onclick="openLb(2)">
+        <img class="gimg" src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=500&q=70" alt="Vasca 3" onclick="openLb(3)">
+        <img class="gimg tall" src="https://images.unsplash.com/photo-1461770354136-8f58567b617a?w=500&q=70" alt="Pinnato 2" onclick="openLb(4)">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRID -->
+<section class="section" style="padding-top:56px;">
+  <div class="section-inner">
+    <div class="label r">Foto in evidenza</div>
+    <div class="photo-grid">
+      <div class="span2-row r"><img class="ph-img tall" src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=800&q=80" alt="Allenamento" onclick="openLb(2)"></div>
+      <div class="r d1"><img class="ph-img" src="https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=600&q=80" alt="Bambini" onclick="openLb(0)"></div>
+      <div class="r d2"><img class="ph-img" src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600&q=80" alt="Vasca" onclick="openLb(1)"></div>
+      <div class="r d1"><img class="ph-img" src="https://images.unsplash.com/photo-1461770354136-8f58567b617a?w=600&q=80" alt="Pinnato" onclick="openLb(4)"></div>
+      <div class="r d2"><img class="ph-img" src="https://images.unsplash.com/photo-1538805060514-97d9cc172021?w=600&q=80" alt="Acquagym" onclick="openLb(6)"></div>
+      <div class="span2 r"><img class="ph-img" style="width:100%;height:220px;" src="https://images.unsplash.com/photo-1622629797619-c100e3e67e2e?w=900&q=80" alt="Piscina" onclick="openLb(5)"></div>
+    </div>
+
+    <div class="social-strip r">
+      <p><strong>Hai foto o video della piscina?</strong> Seguici su Instagram e Facebook per restare aggiornato sulle gare, gli allenamenti e gli eventi di Aphros Swim. Taggaci nelle tue foto in piscina — le migliori finiscono in galleria.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="https://www.instagram.com/aphroswim/" target="_blank" class="btn-blue">Instagram @aphroswim</a>
+        <a href="https://www.facebook.com/people/Aphros-Swim/100064002222136/" target="_blank" class="btn-outline">Facebook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lb">
+  <button id="lb-close" onclick="closeLb()">×</button>
+  <button id="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<script src="shared.js"></script>
+<script>
+const IMGS = [
+  'https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=1200&q=90',
+  'https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1200&q=90',
+  'https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=1200&q=90',
+  'https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=1200&q=90',
+  'https://images.unsplash.com/photo-1461770354136-8f58567b617a?w=1200&q=90',
+  'https://images.unsplash.com/photo-1622629797619-c100e3e67e2e?w=1200&q=90',
+  'https://images.unsplash.com/photo-1538805060514-97d9cc172021?w=1200&q=90',
+  'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&q=90',
+  'https://images.unsplash.com/photo-1514905552197-0610a4d8fd73?w=1200&q=90',
+  'https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=1200&q=90',
+  'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=90',
+];
+let cur = 0;
+function openLb(i) { cur = i; document.getElementById('lb-img').src = IMGS[i]; document.getElementById('lb').classList.add('on'); }
+function closeLb() { document.getElementById('lb').classList.remove('on'); }
+function lbNav(d) { cur = (cur + d + IMGS.length) % IMGS.length; document.getElementById('lb-img').src = IMGS[cur]; }
+document.getElementById('lb').addEventListener('click', e => { if (e.target === document.getElementById('lb')) closeLb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); if (e.key === 'ArrowRight') lbNav(1); if (e.key === 'ArrowLeft') lbNav(-1); });
+</script>
+</body>
+</html>

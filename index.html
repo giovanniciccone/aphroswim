@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aphros Swim — Piscina San Severo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* HERO */
+#hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-img {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1530549387789-4c1017266635?w=1800&q=85') center/cover no-repeat;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.75) 52%, rgba(255,255,255,.08) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 620px; padding: 0 64px;
+  margin-top: 76px;
+  opacity: 0; animation: heroIn .9s .15s ease forwards;
+}
+@keyframes heroIn { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--blue); background: var(--blue-light);
+  padding: 6px 14px; border-radius: 999px; margin-bottom: 28px;
+}
+.hero-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--blue); }
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(54px, 7.5vw, 96px);
+  line-height: 1.02; color: var(--text); margin-bottom: 20px;
+}
+.hero-title em { font-style: italic; color: var(--blue); }
+.hero-desc { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 480px; margin-bottom: 36px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeIn 1s 1.2s ease forwards;
+}
+.hero-scroll span { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.scroll-bar { width: 1px; height: 44px; background: linear-gradient(180deg,var(--blue),transparent); animation: sbar 2s ease-in-out infinite; }
+@keyframes sbar { 0%,100%{opacity:.3} 50%{opacity:1} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* STATS */
+#stats { background: var(--blue); padding: 56px 64px; }
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); max-width: 1200px; margin: 0 auto; }
+.stat { text-align: center; padding: 16px; border-right: 1px solid rgba(255,255,255,.2); }
+.stat:last-child { border-right: none; }
+.stat-n { font-family: 'DM Serif Display', serif; font-size: 56px; line-height: 1; color: #fff; }
+.stat-l { font-size: 13px; color: rgba(255,255,255,.7); margin-top: 6px; }
+
+/* INTRO CARDS */
+#intro { background: var(--bg); }
+.intro-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+  margin-top: 52px;
+}
+.intro-card {
+  background: var(--white); border-radius: var(--radius);
+  border: 1px solid var(--border); padding: 36px 28px;
+  text-decoration: none; color: inherit;
+  transition: box-shadow .25s, transform .25s;
+  display: block;
+}
+.intro-card:hover { box-shadow: 0 8px 28px rgba(0,100,200,.1); transform: translateY(-4px); }
+.ic-icon { width: 44px; height: 44px; background: var(--blue-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--blue); margin-bottom: 20px; }
+.ic-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text); margin-bottom: 10px; }
+.ic-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+.ic-link { font-size: 13px; font-weight: 500; color: var(--blue); display: flex; align-items: center; gap: 4px; }
+
+/* ABOUT STRIP */
+#about { background: var(--white); }
+.about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-img { width: 100%; height: 420px; object-fit: cover; border-radius: var(--radius); display: block; }
+.about-text {}
+.about-text p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+.about-text p:last-of-type { margin-bottom: 28px; }
+
+/* CTA BANNER */
+#cta-banner {
+  background: var(--blue); padding: 80px 64px;
+  text-align: center;
+}
+.cta-banner-inner { max-width: 640px; margin: 0 auto; }
+.cta-banner-inner h2 { font-family: 'DM Serif Display', serif; font-size: clamp(36px,5vw,56px); color: #fff; margin-bottom: 16px; }
+.cta-banner-inner p { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 32px; line-height: 1.7; }
+.btn-white { font-size: 14px; font-weight: 500; background: #fff; color: var(--blue); border: none; padding: 13px 32px; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; transition: background .2s, transform .15s; }
+.btn-white:hover { background: #e8f2ff; transform: translateY(-1px); }
+
+@media(max-width:1024px) {
+  .intro-grid { grid-template-columns: 1fr 1fr; }
+  .about-inner { grid-template-columns: 1fr; gap: 40px; }
+  #stats { padding: 48px 32px; }
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .stat:nth-child(2) { border-right: none; }
+  #cta-banner { padding: 64px 32px; }
+}
+@media(max-width:768px) {
+  .hero-content { padding: 0 20px; }
+  .intro-grid { grid-template-columns: 1fr; }
+  #stats { padding: 36px 20px; }
+  #cta-banner { padding: 56px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">A.S.D. · Scuola Nuoto Federale FIN</div>
+    <h1 class="hero-title">La tua piscina<br>a <em>San Severo</em></h1>
+    <p class="hero-desc">Corsi per ogni età e livello, settore agonistico, acquagym, nuoto pinnato e apnea. Istruttori qualificati FIN in un ambiente professionale e accogliente.</p>
+    <div class="hero-btns">
+      <a href="corsi.html" class="btn-blue">Scopri i corsi</a>
+      <a href="iscrizioni.html" class="btn-outline">Prezzi e iscrizioni</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scorri</span><div class="scroll-bar"></div></div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-row">
+    <div class="stat r"><div class="stat-n" data-t="6">0</div><div class="stat-l">Corsi disponibili</div></div>
+    <div class="stat r d1"><div class="stat-n" data-t="15">0</div><div class="stat-l">Anni di attività</div></div>
+    <div class="stat r d2"><div class="stat-n" data-t="300">0</div><div class="stat-l">Atleti iscritti</div></div>
+    <div class="stat r d3"><div class="stat-n" data-t="4">0</div><div class="stat-l">Vasche e corsie</div></div>
+  </div>
+</div>
+
+<!-- INTRO CARDS -->
+<section id="intro" class="section">
+  <div class="section-inner">
+    <div class="label r">Cosa facciamo</div>
+    <h2 class="section-title r">Tutto quello che cerchi,<br>in una sola piscina</h2>
+
+    <div class="intro-grid">
+      <a href="corsi.html" class="intro-card r">
+        <div class="ic-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="7" r="3"/><path d="M4 18c0-4 14-4 14 0"/><path d="M3 14 Q7 10 11 14"/></svg>
+        </div>
+        <div class="ic-title">Scuola Nuoto</div>
+        <p class="ic-desc">Tre gruppi per età: Bambini 4–5 anni, Bambini 7–10 anni e Ragazzi 11–14 anni. Istruttori qualificati FIN, gruppi omogenei, progressione strutturata.</p>
+        <div class="ic-link">Scopri i corsi <span>→</span></div>
+      </a>
+      <a href="corsi.html" class="intro-card r d1">
+        <div class="ic-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="7" r="3"/><path d="M4 18c0-4 14-4 14 0"/></svg>
+        </div>
+        <div class="ic-title">Corso Adulti</div>
+        <p class="ic-desc">Nuoto per adulti a tutti i livelli, con orari mattutini e serali. Dal principiante assoluto a chi vuole migliorare la propria tecnica in vasca.</p>
+        <div class="ic-link">Scopri il corso <span>→</span></div>
+      </a>
+      <a href="corsi.html" class="intro-card r d2">
+        <div class="ic-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12 Q7 6 11 12 Q15 18 19 12"/><path d="M3 16 Q7 10 11 16 Q15 22 19 16" opacity=".4"/></svg>
+        </div>
+        <div class="ic-title">Acquagym</div>
+        <p class="ic-desc">Ginnastica in acqua a basso impatto articolare. Ideale per tonificazione, benessere cardiovascolare e recupero. Adatta a tutte le età.</p>
+        <div class="ic-link">Scopri il corso <span>→</span></div>
+      </a>
+      <a href="agonismo.html" class="intro-card r">
+        <div class="ic-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 2 l2.4 7.2H21l-6.2 4.5 2.4 7.2L11 17l-6.2 4.9 2.4-7.2L1 10.2h7.6z"/></svg>
+        </div>
+        <div class="ic-title">Settore Agonistico</div>
+        <p class="ic-desc">Esordienti, Pre-Agonistica e Agonismo Categoria. Squadra FIN con partecipazione ai campionati regionali e nazionali.</p>
+        <div class="ic-link">Scopri l'agonismo <span>→</span></div>
+      </a>
+      <a href="orari.html" class="intro-card r d1">
+        <div class="ic-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="9"/><path d="M11 6v5l3.5 3.5"/></svg>
+        </div>
+        <div class="ic-title">Orari settimanali</div>
+        <p class="ic-desc">Attività dal lunedì al sabato, con fasce mattutine e serali. Consulta il calendario giorno per giorno per trovare l'orario più comodo.</p>
+        <div class="ic-link">Vedi gli orari <span>→</span></div>
+      </a>
+      <a href="iscrizioni.html" class="intro-card r d2">
+        <div class="ic-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="18" height="15" rx="2"/><path d="M7 4V2M15 4V2M2 9h18"/></svg>
+        </div>
+        <div class="ic-title">Iscrizioni e prezzi</div>
+        <p class="ic-desc">Come iscriversi, documenti richiesti e quote stagionali. Sconti per famiglie con più iscritti. Tessera FIN inclusa.</p>
+        <div class="ic-link">Come iscriversi <span>→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="about-inner">
+      <div class="r">
+        <img class="about-img" src="https://images.unsplash.com/photo-1622629797619-c100e3e67e2e?w=900&q=80" alt="Piscina Aphros Swim" loading="lazy">
+      </div>
+      <div class="about-text">
+        <div class="label r">Chi siamo</div>
+        <h2 class="section-title r">Una realtà sportiva<br>radicata nel territorio</h2>
+        <p class="r">Aphros Swim è un'associazione sportiva dilettantistica affiliata alla Federazione Italiana Nuoto (FIN), con sede a San Severo, in provincia di Foggia. Da oltre quindici anni siamo un punto di riferimento per il nuoto nella Capitanata.</p>
+        <p class="r d1">Offriamo corsi per tutte le età e tutti i livelli: dai bambini che si avvicinano all'acqua per la prima volta, agli adulti che vogliono imparare o migliorare, fino agli atleti agonisti che competono a livello regionale e nazionale.</p>
+        <p class="r d2">Il nostro staff è composto da istruttori e tecnici certificati FIN, costantemente aggiornati sulle metodologie più moderne di insegnamento e allenamento.</p>
+        <a href="contatti.html" class="btn-blue r d3">Contattaci</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div id="cta-banner">
+  <div class="cta-banner-inner r">
+    <h2>Pronto ad iniziare?</h2>
+    <p>Iscriviti per la stagione in corso. Iscrizioni aperte tutto l'anno, certificato medico obbligatorio. Contattaci per qualsiasi informazione.</p>
+    <a href="iscrizioni.html" class="btn-white">Scopri come iscriversi</a>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+// counters
+const co = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, target = +el.dataset.t;
+    let cur = 0, step = target / 40;
+    const t = setInterval(() => {
+      cur += step;
+      if (cur >= target) { cur = target; clearInterval(t); }
+      el.textContent = Math.floor(cur) + (target >= 100 ? '+' : '');
+    }, 38);
+    co.unobserve(el);
+  });
+}, { threshold: .5 });
+document.querySelectorAll('[data-t]').forEach(el => co.observe(el));
+</script>
+</body>
+</html>

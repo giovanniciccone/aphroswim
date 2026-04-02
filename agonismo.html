@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agonismo — Aphros Swim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.ago-hero-img {
+  width: 100%; height: 480px; object-fit: cover;
+  border-radius: var(--radius); display: block;
+  margin-bottom: 56px;
+}
+
+.ago-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-bottom: 72px; }
+.ago-text p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+
+/* RESULTS */
+.results-section { background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); padding: 40px 36px; }
+.result-item { display: flex; gap: 18px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); transition: padding-left .2s; }
+.result-item:last-child { border-bottom: none; }
+.result-item:hover { padding-left: 6px; }
+.med { font-family: 'DM Serif Display', serif; font-size: 26px; min-width: 36px; text-align: center; line-height: 1; }
+.mg{color:#c9920a;}.ms{color:#8a9db5;}.mb{color:#a0643a;}
+.res-name { font-size: 15px; color: var(--text); margin-bottom: 4px; font-weight: 400; }
+.res-ev { font-size: 13px; color: var(--muted); }
+.res-comp { font-size: 12px; color: var(--blue); margin-top: 4px; font-weight: 500; }
+
+/* NEWS */
+.news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+.news-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 28px 24px; }
+.news-d { font-size: 11px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+.news-t { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); margin-bottom: 10px; }
+.news-x { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* PROVINO */
+.provino-box { background: var(--blue); border-radius: var(--radius); padding: 48px 40px; margin-top: 56px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+.provino-box h3 { font-family: 'DM Serif Display', serif; font-size: 28px; color: #fff; margin-bottom: 10px; }
+.provino-box p { font-size: 15px; color: rgba(255,255,255,.78); line-height: 1.7; }
+
+.discipline-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 24px; }
+.disc-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 28px 24px; }
+.disc-t { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); margin-bottom: 8px; }
+.disc-p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+@media(max-width:1024px){
+  .ago-cols { grid-template-columns: 1fr; gap:36px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .discipline-grid { grid-template-columns: 1fr 1fr; }
+  .provino-box { grid-template-columns: 1fr; }
+}
+@media(max-width:640px){
+  .discipline-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="label r">Settore agonistico</div>
+    <h1 class="r">Competiamo.<br>Vinciamo.</h1>
+    <p class="r">La squadra agonistica di Aphros Swim partecipa ai campionati regionali e nazionali FIN nelle discipline di nuoto, nuoto pinnato e apnea. Un percorso serio, strutturato e aperto a chi ha la voglia di crescere.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+
+    <img class="ago-hero-img r" src="https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=1400&q=80" alt="Squadra agonistica Aphros Swim" loading="lazy">
+
+    <div class="ago-cols">
+      <div class="ago-text">
+        <div class="label r">Chi siamo</div>
+        <h2 class="section-title r">La squadra</h2>
+        <p class="r">Il settore agonistico di Aphros Swim è affiliato alla Federazione Italiana Nuoto e opera secondo i regolamenti FIN per le competizioni regionali e nazionali. Gli atleti vengono seguiti da tecnici qualificati con esperienza nel nuoto competitivo.</p>
+        <p class="r d1">Il programma di allenamento è periodizzato su base annuale, con cicli di preparazione differenziati per stagione agonistica (autunno-inverno) e stagione di preparazione (primavera-estate). Ogni atleta riceve un piano individuale basato sulle proprie caratteristiche e sugli obiettivi di gara.</p>
+        <p class="r d2">Utilizziamo l'analisi video per il miglioramento tecnico, test fisici periodici per il monitoraggio della condizione atletica e sedute specifiche di preparazione mentale alla gara.</p>
+      </div>
+      <div>
+        <div class="results-section r d1">
+          <div class="label" style="margin-bottom:20px;">Risultati recenti</div>
+          <div class="result-item">
+            <div class="med mg">1°</div>
+            <div>
+              <div class="res-name">Campionato Regionale Nuoto Pinnato</div>
+              <div class="res-ev">Monopinna 50m · Under 16</div>
+              <div class="res-comp">Campionato Regionale FIN Puglia · 2024</div>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="med ms">2°</div>
+            <div>
+              <div class="res-name">Trofeo Interregionale Staffetta</div>
+              <div class="res-ev">4×50m Bipinne · Open</div>
+              <div class="res-comp">Trofeo Interregionale · Bari 2024</div>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="med mb">3°</div>
+            <div>
+              <div class="res-name">Circuito Nazionale Apnea CMAS</div>
+              <div class="res-ev">Apnea Dinamica · Open</div>
+              <div class="res-comp">Circuito Nazionale CMAS · 2023</div>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="med mg">1°</div>
+            <div>
+              <div class="res-name">Campionato Provinciale Nuoto</div>
+              <div class="res-ev">100m Stile Libero · Ragazzi</div>
+              <div class="res-comp">Trofeo Città di Foggia · 2023</div>
+            </div>
+          </div>
+          <div class="result-item">
+            <div class="med ms">2°</div>
+            <div>
+              <div class="res-name">Campionato Regionale Nuoto Pinnato</div>
+              <div class="res-ev">Bifin 100m · Under 14</div>
+              <div class="res-comp">Campionato Regionale FIN Puglia · 2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCIPLINE -->
+    <div class="label r">Discipline agonistiche</div>
+    <h2 class="section-title r">Cosa gareggiamo</h2>
+    <div class="discipline-grid">
+      <div class="disc-card r">
+        <div class="disc-t">Nuoto Pinnato</div>
+        <p class="disc-p">La disciplina principale di Aphros Swim. Gareggiamo in vasca da 25m e 50m con monopinna e bipinne, nelle gare di velocità (50m, 100m) e di fondo. Partecipazione ai campionati regionali FIN Puglia e ai trofei interregionali.</p>
+      </div>
+      <div class="disc-card r d1">
+        <div class="disc-t">Nuoto</div>
+        <p class="disc-p">Partecipazione ai campionati provinciali e regionali nelle discipline di stile libero, dorso, rana e farfalla, individuale e staffette. Gruppi under 10, under 12, under 14, under 16 e open.</p>
+      </div>
+      <div class="disc-card r d2">
+        <div class="disc-t">Apnea Sportiva</div>
+        <p class="disc-p">Apnea statica e dinamica in vasca, secondo i regolamenti CMAS e AIDA. Partecipazione al circuito nazionale e ai campionati italiani per le categorie disponibili. Disciplina in forte crescita nel nostro club.</p>
+      </div>
+    </div>
+
+    <!-- NEWS -->
+    <div style="margin-top:64px;">
+      <div class="label r">News agonismo</div>
+      <h2 class="section-title r">Aggiornamenti</h2>
+      <div class="news-grid">
+        <div class="news-card r">
+          <div class="news-d">Marzo 2025</div>
+          <div class="news-t">Iscrizioni squadra primavera 2025</div>
+          <p class="news-x">Il calendario primaverile FIN Puglia è stato pubblicato. I provini di valutazione per la squadra agonistica si terranno a settembre e ottobre 2025. Contattare la segreteria per prenotare la seduta di valutazione.</p>
+        </div>
+        <div class="news-card r d1">
+          <div class="news-d">Febbraio 2025</div>
+          <div class="news-t">Campionati Invernali FIN Puglia · Bari</div>
+          <p class="news-x">La squadra ha partecipato ai campionati invernali di Bari conquistando 4 medaglie nel nuoto pinnato e nello stile libero. Ottima prestazione del gruppo Under 14, con due primati personali stabiliti in gara.</p>
+        </div>
+        <div class="news-card r d2">
+          <div class="news-d">Gennaio 2025</div>
+          <div class="news-t">Nuovo gruppo monopinna Under 12</div>
+          <p class="news-x">Da gennaio è attivo un nuovo gruppo di allenamento monopinna per atleti Under 12. Posti limitati — contattare la segreteria per informazioni sull'inserimento nel gruppo.</p>
+        </div>
+        <div class="news-card r d3">
+          <div class="news-d">Novembre 2024</div>
+          <div class="news-t">Trofeo Interregionale · Bari · Medaglia d'argento</div>
+          <p class="news-x">Argento nella staffetta 4×50m Bipinne nella categoria Open al Trofeo Interregionale di Bari. Prestazione di squadra eccellente, con un distacco minimo dall'oro.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROVINO -->
+    <div class="provino-box r">
+      <div>
+        <h3>Vuoi entrare nella squadra?</h3>
+        <p>Organizziamo sedute di valutazione su appuntamento. I tecnici valuteranno tecnica, condizione fisica e motivazione. Età minima indicativa: 10 anni. Certificato medico agonistico obbligatorio.</p>
+      </div>
+      <a href="contatti.html" class="btn-white" style="white-space:nowrap;font-size:14px;font-weight:500;background:#fff;color:var(--blue);border:none;padding:13px 28px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block;transition:.2s;">Prenota un provino</a>
+    </div>
+
+  </div>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>
