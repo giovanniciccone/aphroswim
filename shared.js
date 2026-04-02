@@ -1,54 +1,94 @@
 // ── TRANSITION OVERLAY ───────────────────────────────────────────────────────
-// Inject overlay HTML first so it's ready immediately
 const overlayHTML = `
 <div id="pt-overlay" style="
   position:fixed;inset:0;z-index:9000;
-  background:#fff;
+  background:#ffffff;
   display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:20px;
+  align-items:center;justify-content:center;gap:28px;
   opacity:0;visibility:hidden;
-  transition:opacity 0.25s ease,visibility 0.25s ease;
+  transition:opacity 0.3s ease,visibility 0.3s ease;
 ">
-  <div style="position:relative;width:200px;height:80px;overflow:hidden;border-bottom:2px solid #0064c8;">
-    <div id="pt-water" style="position:absolute;bottom:0;left:0;right:0;height:0;background:rgba(0,100,200,.09);transition:height 0.4s ease;"></div>
-    <svg id="pt-swimmer" style="position:absolute;bottom:14px;left:-50px;" width="52" height="20" viewBox="0 0 52 20" fill="none">
-      <ellipse cx="24" cy="10" rx="16" ry="5" fill="#111827" opacity=".8"/>
-      <circle cx="40" cy="10" r="5" fill="#111827" opacity=".8"/>
-      <rect x="40" y="8.5" width="12" height="3" rx="1.5" fill="#6b7280" opacity=".7"/>
-      <path d="M2 10 L0 5 L8 10 L0 15 Z" fill="#0064c8"/>
-      <animateTransform attributeName="transform" type="rotate" values="-4 26 10;4 26 10;-4 26 10" dur=".45s" repeatCount="indefinite"/>
+  <img src="logo.png" alt="Aphros Swim" style="height:88px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,100,200,.2));"/>
+
+  <div style="position:relative;width:280px;height:80px;overflow:hidden;border-bottom:2.5px solid #0064c8;border-radius:2px 2px 0 0;">
+    <div id="pt-water" style="
+      position:absolute;bottom:0;left:0;right:0;height:0;
+      background:linear-gradient(180deg,rgba(0,100,200,.03) 0%,rgba(0,100,200,.16) 100%);
+      transition:height 0.5s cubic-bezier(.4,0,.2,1);
+    "></div>
+    <svg id="pt-wave" style="position:absolute;bottom:0;left:0;width:100%;height:16px;opacity:0;transition:opacity .4s;" viewBox="0 0 280 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,8 C46,0 92,16 140,8 C188,0 234,16 280,8 L280,16 L0,16Z" fill="rgba(0,100,200,.15)">
+        <animateTransform attributeName="transform" type="translate" values="0,0;-35,0;0,0" dur="2s" repeatCount="indefinite"/>
+      </path>
+    </svg>
+    <svg id="pt-swimmer" style="position:absolute;bottom:22px;left:-90px;transition:left 0.65s cubic-bezier(.4,0,.2,1),opacity .15s;" width="86" height="36" viewBox="0 0 86 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- body -->
+      <ellipse cx="42" cy="18" rx="26" ry="8" fill="#1a1a2e" opacity=".88"/>
+      <!-- head -->
+      <circle cx="67" cy="16" r="9" fill="#1a1a2e" opacity=".88"/>
+      <!-- swim cap -->
+      <ellipse cx="67" cy="10" rx="8.5" ry="6" fill="#0064c8"/>
+      <!-- goggles -->
+      <ellipse cx="72" cy="16" rx="3" ry="2.2" fill="white" opacity=".8"/>
+      <ellipse cx="72" cy="16" rx="1.5" ry="1.2" fill="#0050a0" opacity=".9"/>
+      <!-- arm forward -->
+      <rect x="72" y="13.5" width="14" height="5" rx="2.5" fill="#4b5563" opacity=".8"/>
+      <!-- fins -->
+      <path d="M5 18 L0 9 L16 18 L0 27 Z" fill="#0064c8"/>
+      <path d="M10 18 L6 12 L18 18 L6 24 Z" fill="#1a8fe3" opacity=".6"/>
+      <!-- oscillation -->
+      <animateTransform attributeName="transform" type="rotate" values="-4 42 18;4 42 18;-4 42 18" dur=".48s" repeatCount="indefinite"/>
+      <!-- bubbles -->
+      <circle cx="22" cy="11" r="2" fill="#3b82f6" opacity=".45">
+        <animate attributeName="cy" values="11;3;11" dur="1.1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".45;0;.45" dur="1.1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="30" cy="9" r="1.3" fill="#3b82f6" opacity=".3">
+        <animate attributeName="cy" values="9;2;9" dur="0.85s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".3;0;.3" dur="0.85s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="17" cy="13" r="1" fill="#3b82f6" opacity=".25">
+        <animate attributeName="cy" values="13;6;13" dur="1.3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".25;0;.25" dur="1.3s" repeatCount="indefinite"/>
+      </circle>
     </svg>
   </div>
-  <div style="font-family:'DM Serif Display',serif;font-size:20px;color:#0064c8;letter-spacing:.04em;">Aphros Swim</div>
-  <div style="font-size:11px;color:#6b7280;letter-spacing:.2em;text-transform:uppercase;">San Severo · FIN</div>
+
+  <div style="font-size:11px;color:#9ca3af;letter-spacing:.28em;text-transform:uppercase;">Caricamento…</div>
 </div>`;
 document.body.insertAdjacentHTML('afterbegin', overlayHTML);
 
-const overlay  = document.getElementById('pt-overlay');
-const ptWater  = document.getElementById('pt-water');
+const overlay   = document.getElementById('pt-overlay');
+const ptWater   = document.getElementById('pt-water');
+const ptWave    = document.getElementById('pt-wave');
 const ptSwimmer = document.getElementById('pt-swimmer');
 
 function showOverlay(cb) {
   overlay.style.opacity = '1';
   overlay.style.visibility = 'visible';
-  // water fill
-  requestAnimationFrame(() => { ptWater.style.height = '60px'; });
-  // swimmer swim across
-  ptSwimmer.style.transition = 'left 0.55s cubic-bezier(.4,0,.2,1), opacity 0.1s';
+  // fill water & show wave
+  requestAnimationFrame(() => {
+    ptWater.style.height = '52px';
+    setTimeout(() => { ptWave.style.opacity = '1'; }, 200);
+  });
+  // swimmer: reset then swim across
+  ptSwimmer.style.transition = 'none';
   ptSwimmer.style.opacity = '0';
-  ptSwimmer.style.left = '-50px';
+  ptSwimmer.style.left = '-90px';
   setTimeout(() => {
+    ptSwimmer.style.transition = 'left 0.65s cubic-bezier(.4,0,.2,1), opacity .15s';
     ptSwimmer.style.opacity = '1';
-    ptSwimmer.style.left = '210px';
-  }, 60);
-  setTimeout(cb, 480);
+    ptSwimmer.style.left = '290px';
+  }, 80);
+  setTimeout(cb, 580);
 }
 
 function hideOverlay() {
   overlay.style.opacity = '0';
   overlay.style.visibility = 'hidden';
   ptWater.style.height = '0';
-  ptSwimmer.style.left = '-50px';
+  ptWave.style.opacity = '0';
+  ptSwimmer.style.left = '-90px';
   ptSwimmer.style.opacity = '0';
 }
 
