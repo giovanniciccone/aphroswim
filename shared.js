@@ -105,9 +105,8 @@ requestAnimationFrame(() => { document.documentElement.style.opacity = '1'; });
 // ── NAV HTML ─────────────────────────────────────────────────────────────────
 const NAV_HTML = `
 <nav id="nav">
-  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:12px;">
+  <a href="index.html" class="nav-logo">
     <img src="logo.png" alt="Aphros Swim" style="height:64px;">
-    <img src="https://www.fipsas.it/images/logo-fipsas.png" alt="FIPSAS" style="height:38px;opacity:.85;" onerror="this.style.display='none'">
   </a>
   <ul class="nav-links">
     <li><a href="corsi.html">Corsi</a></li>
@@ -135,8 +134,37 @@ const FOOTER_HTML = `
   <div class="fi">
     <div class="fb">
       <img src="logo.png" alt="Aphros Swim">
-      <img src="https://www.fipsas.it/images/logo-fipsas.png" alt="FIPSAS" style="height:32px;margin-bottom:16px;opacity:.7;filter:brightness(0) invert(1);" onerror="this.style.display='none'">
       <p>A.S.D. Aphros Swim — Scuola Nuoto Federale FIPSAS. Via Apricena Km 0.400, 71016 San Severo (FG), Puglia.</p>
+      <div class="affil-logos">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" style="height:36px;width:auto;">
+  <rect width="120" height="50" fill="none"/>
+  <!-- Blue circle background -->
+  <circle cx="25" cy="25" r="22" fill="#003f8a"/>
+  <!-- Fish silhouette -->
+  <path d="M14 25 Q18 18 25 18 Q32 18 36 25 Q32 32 25 32 Q18 32 14 25Z" fill="white" opacity=".9"/>
+  <circle cx="30" cy="23" r="2" fill="#003f8a"/>
+  <path d="M36 25 L42 20 L42 30 Z" fill="white" opacity=".7"/>
+  <!-- FIPSAS text -->
+  <text x="50" y="20" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="white">FIPSAS</text>
+  <text x="50" y="32" font-family="Arial,sans-serif" font-size="6.5" fill="rgba(255,255,255,.75)" letter-spacing=".3">FED. ITALIANA PESCA</text>
+  <text x="50" y="41" font-family="Arial,sans-serif" font-size="6.5" fill="rgba(255,255,255,.75)" letter-spacing=".3">SPORTIVA &amp; ATT. SUBACQUEE</text>
+</svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 50" style="height:36px;width:auto;">
+  <rect width="110" height="50" fill="none"/>
+  <!-- 5 Olympic rings, row 1: 3 rings, row 2: 2 rings offset -->
+  <!-- Row 1 -->
+  <circle cx="18" cy="18" r="8" fill="none" stroke="#0085c7" stroke-width="2.5"/>
+  <circle cx="36" cy="18" r="8" fill="none" stroke="#f4c300" stroke-width="2.5"/>
+  <circle cx="54" cy="18" r="8" fill="none" stroke="#000000" stroke-width="2.5"/>
+  <!-- Row 2 -->
+  <circle cx="27" cy="28" r="8" fill="none" stroke="#009f3d" stroke-width="2.5"/>
+  <circle cx="45" cy="28" r="8" fill="none" stroke="#df0024" stroke-width="2.5"/>
+  <!-- CONI text -->
+  <text x="68" y="22" font-family="Arial,sans-serif" font-weight="800" font-size="14" fill="white">CONI</text>
+  <text x="68" y="33" font-family="Arial,sans-serif" font-size="6" fill="rgba(255,255,255,.7)" letter-spacing=".2">COMITATO OLIMPICO</text>
+  <text x="68" y="41" font-family="Arial,sans-serif" font-size="6" fill="rgba(255,255,255,.7)" letter-spacing=".2">NAZIONALE ITALIANO</text>
+</svg>
+      </div>
     </div>
     <div class="fcol">
       <div class="fct">Navigazione</div>
@@ -170,7 +198,7 @@ const FOOTER_HTML = `
     </div>
   </div>
   <div class="fb-bot">
-    <p>© 2025 A.S.D. Aphros Swim · San Severo (FG) · Tutti i diritti riservati</p>
+    <p>© 2025 A.S.D. Aphros Swim · San Severo (FG) · Tutti i diritti riservati · Affiliata FIPSAS · Riconosciuta CONI</p>
     <div class="fs">
       <a href="https://www.instagram.com/aphroswim/" target="_blank">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="1" width="13" height="13" rx="3"/><circle cx="7.5" cy="7.5" r="3"/><circle cx="11" cy="4" r=".8" fill="currentColor" stroke="none"/></svg>
